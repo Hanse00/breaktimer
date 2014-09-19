@@ -25,7 +25,7 @@ function resetTime() {
 function onAlarm(alarm) {
 	if (alarm && alarm.name == "alarm") {
 		console.log("Alarm!");
-		chrome.notifications.create("alarm", {type: "basic", title: "Stream break!", message: "It's time to take a break from streaming.", iconUrl: "calculator-128.png"}, alarmCall);
+		chrome.notifications.create("alarm", {type: "basic", title: "Stream break!", message: "It's time to take a break from streaming.", iconUrl: "breaktimer-128.png"}, alarmCall);
 	}
 }
 

@@ -1,7 +1,7 @@
 {
 	"name": "Breaktimer",
 	"description": "A Chrome App to help remember taking breaks.",
-	"version": "0.1",
+	"version": "0.1.1",
 	"manifest_version": 2,
 	"app": {
 		"background": {
