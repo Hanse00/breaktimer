@@ -1,6 +1,6 @@
 {
-	"name": "Hello World!",
-	"description": "My first Chrome App.",
+	"name": "Breaktimer",
+	"description": "A Chrome App to help remember taking breaks.",
 	"version": "0.1",
 	"manifest_version": 2,
 	"app": {
@@ -8,7 +8,10 @@
 			"scripts": ["background.js"]
 		}
 	},
-	"icons": { "16": "calculator-16.png", "128": "calculator-128.png" },
+	"icons": {
+		"16": "breaktimer-16.png",
+		"128": "breaktimer-128.png"
+	},
 	"permissions": [
 		"alarms",
 		"notifications"

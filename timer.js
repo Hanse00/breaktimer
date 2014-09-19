@@ -1,33 +1,32 @@
-var element;
-var timeInterval = 1;
-
-document.addEventListener("DOMContentLoaded", startTimer);
+document.addEventListener("DOMContentLoaded", onReady);
 chrome.alarms.onAlarm.addListener(onAlarm);
 
-function startTimer() {
-	chrome.notifications.create("", {type: "basic", title: "Stream break!", message: "It's time to take a break from streaming.", iconUrl: "calculator-128.png"}, notificationCallback);
-	element = document.createElement("p");
-	updateTime();
-	chrome.alarms.create("alarm", {periodInMinutes: timeInterval});
-	interval = setInterval(updateTime, 1000);
+function onReady() {
+	document.getElementById("setButton").addEventListener("click", setTime);
+	document.getElementById("resetButton").addEventListener("click", resetTime);
 }
 
-function updateTime() {
-	var text = document.createTextNode(Date());
-
-	while (element.firstChild) {
-		element.removeChild(element.firstChild);
+function setTime() {
+	resetTime();
+	var input = parseInt(document.getElementById("timeInterval").value);
+	if (!isNaN(input) && input != 0) {
+		console.log("It's a number!");
+		chrome.alarms.create("alarm", {periodInMinutes: input});
 	}
-	element.appendChild(text);
+	console.log(input);
+	console.log("Set clicked");
+}
 
-	document.body.appendChild(element);
+function resetTime() {
+	chrome.alarms.clear("alarm");
+	console.log("Reset clicked");
 }
 
 function onAlarm(alarm) {
 	if (alarm && alarm.name == "alarm") {
 		console.log("Alarm!");
-chrome.notifications.create("", {type: "basic", title: "Stream break!", message: "It's time to take a break from streaming.", iconUrl: "calculator-128.png"}, notificationCallback);
+		chrome.notifications.create("alarm", {type: "basic", title: "Stream break!", message: "It's time to take a break from streaming.", iconUrl: "calculator-128.png"}, alarmCall);
 	}
 }
 
-function notificationCallback(notificationId) {}
+function alarmCall() {}
